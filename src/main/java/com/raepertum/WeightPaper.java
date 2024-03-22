@@ -15,7 +15,10 @@ public class WeightPaper {
     private final FilenameUtils filenameUtils = new FilenameUtils();
     private final ImageSelector imageSelector = new ImageSelector();
 
+    private final FieldImageGenerator fieldImageGenerator = new FieldImageGenerator();
+
     public WeightPaper(){
+        generateImage();
         setWallpaper();
     }
 
@@ -32,8 +35,11 @@ public class WeightPaper {
         }
     }
 
-    private File getWallpaperFile() {
+    private File generateImage(){
+        return fieldImageGenerator.generateImage();
+    }
 
+    private File getWallpaperFile() {
         String currentDirectory = System.getProperty("user.dir");
         File dir = new File(currentDirectory+"/img");
         File[] filesAndDirs = dir.listFiles();
@@ -41,7 +47,6 @@ public class WeightPaper {
         Arrays.stream(images).forEach(System.out::println);
 
         return images.length==1 ? images[0] : imageSelector.askForImage(images);
-
     }
 
     private File[] getImgs(File[] files){
