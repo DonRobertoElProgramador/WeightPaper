@@ -1,5 +1,7 @@
 package com.raepertum;
 
+import org.springframework.stereotype.Component;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class ImageSelector {
 
     public File askForImage(File[] images){
